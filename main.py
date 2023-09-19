@@ -9,5 +9,5 @@ updates = response.json()
 
 data = updates['result'][-1]
 
-text = data['message']['text']
-print(text)
+chat_id = data['message']['chat']['id']
+print(chat_id)
