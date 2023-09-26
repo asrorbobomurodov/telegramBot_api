@@ -14,10 +14,10 @@ def sendPhoto(chat_id:str,photo:str):
     return response.json()
 
 
-photo_url='https://miro.medium.com/v2/resize:fit:300/1*YVTFl1UEkt3_rkez-DIU9w.png'
-
+# photo_url='https://miro.medium.com/v2/resize:fit:300/1*YVTFl1UEkt3_rkez-DIU9w.png'
+file_id = 'AgACAgIAAxkBAAIBNGUS0WLd7IBg9Dt6kh8UDlG-zg-PAAL6zDEblx2QSM_jdc2XZAi1AQADAgADcwADMAQ'
 data = get_updates(TOKEN)
 chat_id = data['message']['chat']['id']
 
 # send photo with three ways: url, id, file
-sendPhoto(chat_id, photo_url)
+sendPhoto(chat_id, file_id)
