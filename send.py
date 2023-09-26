@@ -27,7 +27,17 @@ def sendContact(chat_id, phone_number, first_name, last_name=None):
     response = requests.post(URL, params=params)
     return response.json()
 
+def sendDice(chat_id, emoji=None):
+    params = {
+        "chat_id": chat_id,
+        "emoji": emoji
+    }
+    URL = f'https://api.telegram.org/bot{TOKEN}/sendDice'
+
+    response = requests.post(URL, params=params)
+    return response.json()
+
 data = get_updates(TOKEN)
 chat_id = data['message']['chat']['id']
 
-sendContact(chat_id, phone_number="+998975787678", first_name="Asror", last_name="Bobomurodov")
+sendDice(chat_id, emoji="⚽")
