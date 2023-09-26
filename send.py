@@ -14,10 +14,20 @@ def sendDocument(chat_id, document):
     response = requests.post(URL, params=params)
     return response.json()
 
-document = 'BQACAgIAAxkBAAIBO2US2m3ZhtnV_yKll4mOna1ftX3wAALBNAAClx2QSMymeSz6F6twMAQ'
+def sendContact(chat_id, phone_number, first_name, last_name=None):
+    params = {
+        "chat_id": chat_id,
+        "phone_number": phone_number,
+        "first_name": first_name,
+        "last_name": last_name
+    }
+
+    URL = f'https://api.telegram.org/bot{TOKEN}/sendContact'
+
+    response = requests.post(URL, params=params)
+    return response.json()
 
 data = get_updates(TOKEN)
 chat_id = data['message']['chat']['id']
 
-sendDocument(chat_id, document)
-
+sendContact(chat_id, phone_number="+998975787678", first_name="Asror", last_name="Bobomurodov")
