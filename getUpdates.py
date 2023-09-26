@@ -1,11 +1,9 @@
 import requests
 
-TOKEN = ''
-BASE_URL = f'https://api.telegram.org/bot{TOKEN}/getUpdates'
-
-
-response = requests.get(url=BASE_URL)
-updates=response.json()['result']
-data = updates['result'][-1]
-chat_id = data['message']['chat']['id']
+def get_updates(TOKEN):
+    BASE_URL = f'https://api.telegram.org/bot{TOKEN}/getUpdates'
+    response = requests.get(url=BASE_URL)
+    updates=response.json()
+    data = updates['result'][-1]
+    return data
 # print each update
