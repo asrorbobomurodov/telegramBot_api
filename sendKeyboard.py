@@ -5,16 +5,13 @@ TOKEN='6388893107:AAHm55DuPheZmctXz5mX5HnSfD9zfgmpNhY'
 
 def sendMessage(chat_id:str, text:str):
     button1 = {
-        "text": "Button1",
-        "request_contact": True
+        "text": "Dog 🐶"
     }
     button2 = {
-        "text": "Button2"
+        "text": "Cat 😺"
     }
-    button3 = {
-        "text": "Button3"
-    }
-    keyboard = {"keyboard": [[button1, button2], [button3]], "resize_keyboard": True}
+
+    keyboard = {"keyboard": [[button1, button2]], "resize_keyboard": True}
 
     params = {
         "chat_id":chat_id,
