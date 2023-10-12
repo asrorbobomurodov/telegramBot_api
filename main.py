@@ -1,5 +1,5 @@
 import requests
-TOKEN="6388893107:AAGIbsoNExuuEgRirNnCbLQyN_wI9-9BrPA"
+TOKEN="6066920082:AAH3Xd8Pjt3dTVRawHehzukBcE6doUNlN8A"
 
 url = f"https://api.telegram.org/bot{TOKEN}/getUpdates"
 
@@ -9,5 +9,5 @@ updates = response.json()
 
 data = updates['result'][-1]
 
-chat_id = data['message']['chat']['id']
-print(chat_id)
+# chat_id = data['message']['chat']['id']
+print(data)
