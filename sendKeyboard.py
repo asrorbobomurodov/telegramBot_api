@@ -1,7 +1,7 @@
-import os
+from getUpdates import get_updates
 import requests
 
-TOKEN='6388893107:AAHm55DuPheZmctXz5mX5HnSfD9zfgmpNhY'
+TOKEN='6431620392:AAFur8ALeq6cKizXogjt3oM1deR9RVOsLpk'
 
 def sendMessage(chat_id:str, text:str):
     button1 = {
@@ -11,8 +11,11 @@ def sendMessage(chat_id:str, text:str):
         "text": "Cat 😺"
     }
 
-    keyboard = {"keyboard": [[button1, button2]], "resize_keyboard": True}
-
+    keyboard = {
+        'keyboard': [[button1, button2]],
+        'resize_keyboard': True,
+        'input_field_placeholder': 'Click button Asror'
+    }
     params = {
         "chat_id":chat_id,
         "text": text,
@@ -24,7 +27,15 @@ def sendMessage(chat_id:str, text:str):
     response = requests.get(url, json=params)
 
     return response.json()
-
-chat_id = 5575549228
-text = "hi"
-print(sendMessage(chat_id, text))
+last_msg_id = -1
+while True:
+    data = get_updates(TOKEN)['message']
+    msg_id = data['message_id']
+    chat_id = data['chat']['id']
+    text = data['text']
+    if last_msg_id != msg_id:
+        if text == '/start':
+            sendMessage(chat_id, 'Welcome to "EchoBot"')
+        else:
+            sendMessage(chat_id, text)
+    last_msg_id = msg_id
