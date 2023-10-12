@@ -1,17 +1,18 @@
-import os 
 import requests
 from getUpdates import get_updates
-TOKEN = '6388893107:AAHm55DuPheZmctXz5mX5HnSfD9zfgmpNhY'
+TOKEN = '6066920082:AAH3Xd8Pjt3dTVRawHehzukBcE6doUNlN8A'
 
 
 def sendDocument(chat_id, document):
     params = {
         "chat_id": chat_id,
-        "document": document
+    }
+    file = {
+        'document': document
     }
     URL = f'https://api.telegram.org/bot{TOKEN}/sendDocument'
 
-    response = requests.post(URL, params=params)
+    response = requests.post(URL, params=params, files=file)
     return response.json()
 
 def sendContact(chat_id, phone_number, first_name, last_name=None):
@@ -40,4 +41,8 @@ def sendDice(chat_id, emoji=None):
 data = get_updates(TOKEN)
 chat_id = data['message']['chat']['id']
 
-sendDice(chat_id, emoji="⚽")
+document = open('text.txt', 'rb')
+
+# sendDocument(chat_id, document)
+# sendContact(chat_id, '+998975787678', 'Asror', 'Bobomurodov')
+# sendDice(chat_id, emoji="🎲")
