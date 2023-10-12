@@ -6,4 +6,5 @@ def get_updates(TOKEN):
     updates=response.json()
     data = updates['result'][-1]
     return data
-# print each update
+
+print(get_updates('6066920082:AAH3Xd8Pjt3dTVRawHehzukBcE6doUNlN8A'))
