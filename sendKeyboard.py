@@ -1,5 +1,6 @@
 from getUpdates import get_updates
 import requests
+from time import sleep
 
 TOKEN='6431620392:AAFur8ALeq6cKizXogjt3oM1deR9RVOsLpk'
 
@@ -27,15 +28,18 @@ def sendMessage(chat_id:str, text:str):
     response = requests.get(url, json=params)
 
     return response.json()
+
 last_msg_id = -1
 while True:
     data = get_updates(TOKEN)['message']
     msg_id = data['message_id']
     chat_id = data['chat']['id']
-    text = data['text']
+    text = data.get('text')
     if last_msg_id != msg_id:
         if text == '/start':
             sendMessage(chat_id, 'Welcome to "EchoBot"')
-        else:
+        elif text != None:
             sendMessage(chat_id, text)
+        
     last_msg_id = msg_id
+    sleep(1)
