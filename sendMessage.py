@@ -15,7 +15,7 @@ def sendMessage(chat_id:str, text:str):
 
     return response.json()
 
-updates = get_updates('Token here')
+updates = get_updates(TOKEN)
 chat_id = updates['message']['chat']['id']
 text = updates['message']['text']
 sendMessage(chat_id, text)
