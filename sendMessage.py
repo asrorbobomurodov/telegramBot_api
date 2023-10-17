@@ -1,7 +1,8 @@
 import os
 import requests
+from getUpdates import get_updates
 
-TOKEN = '6388893107:AAGIbsoNExuuEgRirNnCbLQyN_wI9-9BrPA'
+TOKEN = 'Token here'
 
 def sendMessage(chat_id:str, text:str):
     params = {
@@ -12,8 +13,9 @@ def sendMessage(chat_id:str, text:str):
 
     response = requests.get(URL, params=params)
 
-    return response.status_code
-    
-chat_id = 5575549228
-text = "hi"
-print(sendMessage(chat_id, text))
+    return response.json()
+
+updates = get_updates('Token here')
+chat_id = updates['message']['chat']['id']
+text = updates['message']['text']
+sendMessage(chat_id, text)
