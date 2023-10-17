@@ -7,4 +7,4 @@ def get_updates(TOKEN):
     data = updates['result'][-1]
     return data
 
-print(get_updates('6066920082:AAH3Xd8Pjt3dTVRawHehzukBcE6doUNlN8A'))
+# print(get_updates('Token here'))
